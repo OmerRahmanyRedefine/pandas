@@ -1,0 +1,33 @@
+name: Sync pandas
+
+on:
+  # Triggers the workflow every day
+  schedule:
+    - cron: "0 0 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Merge pandas into Redefine/pandas
+        run: |
+          # https://stackoverflow.com/questions/7244321/how-do-i-update-or-sync-a-forked-repository-on-github
+          # Add the remote, call it "upstream":
+          git remote add upstream https://github.com/pandas-dev/pandas.git
+          # Fetch all the branches of that remote into remote-tracking branches
+          git fetch upstream
+          # Make sure that you're on your main branch:
+          git checkout main
+          # Rewrite your master branch so that any commits of yours that
+          # aren't already in upstream/main are replayed on top of that
+          # other branch:
+          git rebase upstream/main
+          git push -f origin main
