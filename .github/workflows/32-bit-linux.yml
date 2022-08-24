@@ -1,16 +1,16 @@
 name: 32 Bit Linux
 
-on:
-  push:
-    branches:
-      - main
-      - 1.4.x
-  pull_request:
-    branches:
-      - main
-      - 1.4.x
-    paths-ignore:
-      - "doc/**"
+# on:
+#   push:
+#     branches:
+#       - main
+#       - 1.4.x
+#   pull_request:
+#     branches:
+#       - main
+#       - 1.4.x
+#     paths-ignore:
+#       - "doc/**"
 
 permissions:
   contents: read
