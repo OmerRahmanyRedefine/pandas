@@ -1,9 +1,9 @@
 name: Sync pandas
 
-on:
-  # Triggers the workflow every day
-  schedule:
-    - cron: "0 0 * * *"
+# on:
+#   # Triggers the workflow every day
+#   schedule:
+#     - cron: "0 0 * * *"
 
 permissions:
   contents: read
